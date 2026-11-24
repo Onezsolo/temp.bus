@@ -1,0 +1,132 @@
+{
+  "house": "C:\\laragon\\www\\template-business",
+  "remote": "https://github.com/Onezsolo/temp.bus.git",
+  "showcase": "public/index.php",
+  "projects": [
+    {
+      "name": "AFA-GHANA",
+      "path": "AFA-GHANA",
+      "type": "Laravel",
+      "remote": "https://github.com/Onezsolo/afa.git",
+      "branch": "main",
+      "rules": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".claude/skills/deploying-to-cloud/SKILL.md",
+        ".claude/skills/infer-conventions/SKILL.md",
+        ".claude/skills/laravel-best-practices/SKILL.md",
+        ".claude/skills/tailwindcss-development/SKILL.md",
+        ".claude/skills/testing-best-practices/SKILL.md"
+      ],
+      "verify": ["php artisan test", "vendor/bin/pint --test"]
+    },
+    {
+      "name": "datatem",
+      "path": "datatem",
+      "type": "Laravel base clone",
+      "remote": "https://github.com/Onezsolo/datatem.git",
+      "branch": "main",
+      "rules": [],
+      "verify": ["php artisan test"]
+    },
+    {
+      "name": "novagel",
+      "path": "novagel",
+      "type": "Laravel",
+      "remote": "https://github.com/Onezsolo/novagel.git",
+      "branch": "patu/program-f99758f5",
+      "rules": ["AGENTS.md", "CLAUDE.md"],
+      "verify": ["vendor/bin/pint --test", "vendor/bin/phpstan analyse --memory-limit=256M", "php artisan test"]
+    },
+    {
+      "name": "one-system",
+      "path": "one-system",
+      "type": "Laravel",
+      "remote": "https://github.com/Onezsolo/datatem.git",
+      "branch": "feat/one-system-foundation",
+      "rules": [],
+      "verify": ["php artisan test", "npm run build"]
+    },
+    {
+      "name": "patu-design-intelligence",
+      "path": "patu-design-intelligence",
+      "type": "Python FastAPI + SvelteKit",
+      "remote": "https://github.com/Onezsolo/patu-codes.git",
+      "branch": "design-intelligence",
+      "rules": ["AGENTS.md"],
+      "verify": ["ruff check app tests", "mypy app", "pytest", "npm run check", "npm run build"]
+    },
+    {
+      "name": "patu-research",
+      "path": "patu-research",
+      "type": "Python FastAPI + Next.js",
+      "remote": "https://github.com/Onezsolo/patu-research.git",
+      "branch": "main",
+      "rules": ["AGENTS.md"],
+      "verify": ["pytest", "npm run build", "npm run lint"]
+    },
+    {
+      "name": "patu-technologies",
+      "path": "patu-technologies",
+      "type": "Python FastAPI + SvelteKit",
+      "remote": "https://github.com/Onezsolo/patu-codes.git",
+      "branch": "main",
+      "rules": ["AGENTS.md"],
+      "verify": ["ruff check app tests", "mypy app", "pytest", "npm run check", "npm run build"]
+    },
+    {
+      "name": "PATUchat",
+      "path": "PATUchat",
+      "type": "Laravel",
+      "remote": "https://github.com/Onezsolo/PATUchat.git",
+      "branch": "main",
+      "rules": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".claude/skills/deploying-to-cloud/SKILL.md",
+        ".claude/skills/infer-conventions/SKILL.md",
+        ".claude/skills/laravel-best-practices/SKILL.md",
+        ".claude/skills/tailwindcss-development/SKILL.md",
+        ".claude/skills/testing-best-practices/SKILL.md"
+      ],
+      "verify": ["php artisan test"]
+    },
+    {
+      "name": "patupa",
+      "path": "patupa",
+      "type": "Laravel",
+      "remote": "https://github.com/Onezsolo/patupa.git",
+      "branch": "main",
+      "rules": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".ai/rules/COMMUNICATION.md",
+        ".ai/rules/index.md",
+        ".ai/rules/PATUCHAT.md",
+        ".claude/skills/deploying-to-cloud/SKILL.md",
+        ".claude/skills/infer-conventions/SKILL.md",
+        ".claude/skills/laravel-best-practices/SKILL.md",
+        ".claude/skills/tailwindcss-development/SKILL.md",
+        ".claude/skills/testing-best-practices/SKILL.md"
+      ],
+      "verify": ["php artisan test", "php artisan patupaa:health-audit"]
+    },
+    {
+      "name": "patupaa-worker",
+      "path": "patupaa-worker",
+      "type": "Laravel worker",
+      "remote": "https://github.com/Onezsolo/patupa.git",
+      "branch": "feature/patu-dialer",
+      "rules": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        ".claude/skills/deploying-to-cloud/SKILL.md",
+        ".claude/skills/infer-conventions/SKILL.md",
+        ".claude/skills/laravel-best-practices/SKILL.md",
+        ".claude/skills/tailwindcss-development/SKILL.md",
+        ".claude/skills/testing-best-practices/SKILL.md"
+      ],
+      "verify": ["php artisan test"]
+    }
+  ]
+}

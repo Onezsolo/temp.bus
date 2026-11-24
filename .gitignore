@@ -1,0 +1,24 @@
+# House: Template Business projects are independent repos.
+/AFA-GHANA/
+/datatem/
+/novagel/
+/one-system/
+/patu-design-intelligence/
+/patu-technologies/
+/patu-research/
+/PATUchat/
+/patupa/
+/patupaa-worker/
+/patutrade.worktrees/
+/_archive/
+
+# Kilo and editor state
+/.kilo/worktrees/
+/.kilo/agent-manager.json
+
+# Local and OS files
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db

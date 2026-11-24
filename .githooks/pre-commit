@@ -1,0 +1,30 @@
+#!/bin/sh
+# House rule: child project repositories are independent and must never be
+# staged or committed through the house repository.
+set -eu
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR || true)
+
+for file in $staged; do
+    top=${file%%/*}
+
+    if [ -e "$top/.git" ]; then
+        echo "HOUSE RULE: '$top' is an independent project repository. Do not stage it in the house repo." >&2
+        exit 1
+    fi
+
+    case "$top" in
+        _archive|patutrade.worktrees)
+            echo "HOUSE RULE: '$top' is house archive/worktree data and must not be committed." >&2
+            exit 1
+            ;;
+    esac
+done
+
+gitlinks=$(git diff --cached --raw | awk '$2 == "160000" {print $NF}')
+if [ -n "$gitlinks" ]; then
+    echo "HOUSE RULE: nested repositories cannot be committed to the house repo: $gitlinks" >&2
+    exit 1
+fi
+
+exit 0
