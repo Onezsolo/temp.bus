@@ -6,7 +6,15 @@ param(
 
 $ErrorActionPreference = 'Continue'
 if ([string]::IsNullOrWhiteSpace($Root)) { $Root = Split-Path -Parent $PSScriptRoot }
-$root = (Resolve-Path -LiteralPath $Root).Path
+$requestedRoot = (Resolve-Path -LiteralPath $Root).Path
+$mainRoot = $requestedRoot
+if (Test-Path -LiteralPath (Join-Path $requestedRoot '.git')) {
+    try {
+        $worktrees = @(git -C $requestedRoot worktree list --porcelain 2>$null)
+        if ($worktrees.Count -gt 0 -and $worktrees[0] -match '^worktree\s+(.+)$') { $mainRoot = $Matches[1] }
+    } catch { }
+}
+$root = (Resolve-Path -LiteralPath $mainRoot).Path
 $skillPath = Join-Path $root '.kilo/skills/unslop/SKILL.md'
 $compatPath = Join-Path $root '.kilocode/skills/unslop/SKILL.md'
 $expectedHash = '313522e7233030030e0c74e2e6ece42df700bbf2c7625b56f876f05bdce013b8'
