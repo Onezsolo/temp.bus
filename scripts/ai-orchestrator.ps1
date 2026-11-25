@@ -284,6 +284,8 @@ function New-Context([string]$Dir, $Task) {
     if ($handover.Length -gt 5000) { $handover = $handover.Substring(0, 5000) + "`n...[truncated for context budget]" }
 
     $recommended = Get-RecommendedSpecialists $Task
+    $uiPattern = '(?i)\b(ui|ux|design|frontend|layout|visual|copy|typography|motion|responsive|figma|screenshot|interface|component|tailwind|css|theme|mobile|accessibility|landing|dashboard)\b'
+    $isUiTask = (([string]$Task.title + ' ' + [string]$Task.objective) -match $uiPattern)
     $taskDependencies = @()
     foreach ($dependency in @($Task.dependencies)) {
         $taskDependencies += "- $dependency"
@@ -340,6 +342,14 @@ function New-Context([string]$Dir, $Task) {
     $lines.Add('')
     $lines.Add('## Recommended specialists')
     foreach ($specialist in $recommended) { $lines.Add("- $specialist") }
+    $lines.Add('')
+    $lines.Add('## Design skill')
+    if ($isUiTask) {
+        $lines.Add('- This is a UI/UX task. Read and apply the shared Unslop skill at C:/laragon/www/template-business/.kilo/skills/unslop/SKILL.md before implementation or review.')
+        $lines.Add('- Preserve the project design system, tokens, brand and components; Unslop improves craft and direction, it does not replace product identity.')
+    } else {
+        $lines.Add('- Not a UI/UX task. Do not load Unslop; it is irrelevant to backend, data, infrastructure, API or payment-only work.')
+    }
     $lines.Add('')
     $lines.Add('## Required completion evidence')
     $lines.Add('- Terminal output for the project verify command(s), with exit status.')

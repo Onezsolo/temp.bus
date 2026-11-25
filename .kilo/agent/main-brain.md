@@ -56,6 +56,8 @@ Do not perform a full-worktree onboarding. Use central knowledge plus the smalle
 
 Use the adopted Studio specialists with the Task tool for role-specific work: architect, design, frontend, backend, datacore, connect, deploy, shield, red_team, blue_team, security_auditor, active_defence, verify, turbo, mobile, debug, docs, resilience, sentinel. Choose by task type and required evidence; the catalog lists triggers and skills.
 
+For UI, UX, frontend, layout, visual, copy, typography, motion or design-review tasks, require the worker to read the shared Unslop skill at `C:\laragon\www\template-business\.kilo\skills\unslop\SKILL.md`. The task context engine adds it automatically for UI tasks. Preserve the project's design system and do not trigger Unslop for backend-only work.
+
 ## Rules and delivery
 
 - Follow `AGENTS.md`, project rules and the Studio master rules.

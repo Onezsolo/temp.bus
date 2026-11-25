@@ -23,6 +23,11 @@ Do not perform a full-worktree onboarding before every task. The orchestrator pr
 - `studio-specialists.json` - adopted Studio specialist catalog.
 - `studio-skill-map.json` - specialist-to-skill mapping.
 - `MASTER_RULES.md` - adopted Studio master coding rules.
+- `UNSLOP.md` - shared design skill installation, discovery and usage rules.
+
+## Shared tools
+
+- Unslop design skill: `C:\laragon\www\template-business\.kilo\skills\unslop\SKILL.md`. Use it for UI/UX, frontend, layout, visual, copy, typography, motion, responsive and design-review tasks; do not invoke it for backend-only work. It is registered globally through `skills.paths`; do not copy it into child projects. Project design systems and tokens take precedence.
 
 ## Projects
 

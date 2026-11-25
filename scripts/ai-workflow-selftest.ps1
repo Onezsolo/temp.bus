@@ -72,6 +72,14 @@ try {
     Assert ($context.Contains('Expected files') -and $context.Contains('README.md')) 'context contains expected file references'
     Assert (-not $context.Contains('secret.html')) 'context does not include unrelated files'
     Assert ($context.Contains('Project knowledge')) 'context includes central project knowledge'
+    Assert ($context.Contains('Not a UI/UX task')) 'non-UI task does not trigger Unslop'
+
+    $uiIntake = Invoke-Orchestrator @('-Root', $temp, '-Action', 'intake', '-Project', 'demo', '-Title', 'Polish dashboard UI', '-Objective', 'Improve the layout and typography', '-Files', 'README.md')
+    Assert ($uiIntake.ExitCode -eq 0) 'UI task intake succeeds'
+    $uiTask = Get-LatestTaskId
+    $uiContextPath = Join-Path $temp ('docs/ai/tasks/' + $uiTask + '/context.md')
+    $uiContext = Get-Content -LiteralPath $uiContextPath -Raw
+    Assert ($uiContext.Contains('This is a UI/UX task') -and $uiContext.Contains('unslop')) 'UI task context automatically includes Unslop'
 
     $intake2 = Invoke-Orchestrator @('-Root', $temp, '-Action', 'intake', '-Project', 'demo', '-Title', 'Conflicting demo task', '-Objective', 'Conflict test', '-Files', 'README.md')
     Assert ($intake2.ExitCode -eq 0) 'second task intake succeeds'

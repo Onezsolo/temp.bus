@@ -1,6 +1,6 @@
 {
   "source": "patu-technologies/backend/app/services/ai/skills_catalog.py",
-  "importedAt": "2026-11-25T06:49:30.978455+00:00",
+  "importedAt": "2026-11-25T07:42:51.274064+00:00",
   "allWorkerSkills": [
     "test-driven-development",
     "systematic-debugging",

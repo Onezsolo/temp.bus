@@ -72,6 +72,17 @@ def main() -> None:
             for skill in data["skills"]:
                 body.append(f"- {skill['name']}: {skill['purpose']}")
             body.append("")
+        if key in {"design", "frontend", "mobile"}:
+            body.append("## Shared design skill (Unslop)")
+            body.append(
+                "For UI, UX, frontend, layout, visual, copy, typography, motion or responsive work, "
+                "read and apply the shared Unslop skill at "
+                "C:/laragon/www/template-business/.kilo/skills/unslop/SKILL.md. "
+                "Preserve the project's own design system, tokens, brand and components; Unslop "
+                "improves craft and direction, it does not replace the product identity. Do not "
+                "load it for backend, database, infrastructure, API or payment-only work."
+            )
+            body.append("")
         body.append("## House requirement")
         body.append(
             "Read the Template Business house AGENTS.md, the central knowledge index and the "

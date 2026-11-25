@@ -9,3 +9,11 @@ Only entries backed by a checkpoint, git state and executed test evidence belong
 - Evidence: `scripts/ai-workflow-selftest.ps1` passed 33 checks covering context preparation, claim conflicts, checkpoint evidence, handover, failover, resume, verified knowledge sync and session-independent persistence. `scripts/house-audit.ps1` passed all checks.
 - Limitations: the Visual Studio Code extension must reload before the new `main-brain` and specialist agents are selectable; the PATU Studio FastAPI/PostgreSQL runtime was not started, so only its agents/rules/task semantics are reused. Live Agent Manager concurrency and quota failover were not exercised beyond the state-machine self-test.
 
+## 2026-11-25 - Shared Unslop design skill
+
+- Installed the complete official Unslop skill at the house parent (`C:\laragon\www\template-business\.kilo\skills\unslop`) with the CC-BY-4.0 license and a `.kilocode/skills/unslop` compatibility junction.
+- Registered the parent skills directory in the global Kilo `skills.paths`; added scoped read/external-directory permissions for the shared skill.
+- Added UI task context injection, `/design-review`, design/frontend/mobile specialist addenda and central knowledge `UNSLOP.md`.
+- Verified: `verify-unslop.ps1` 9 PASS; workflow self-test 35 PASS; live `kilo run` read-only discovery/read passed in AFA-GHANA and patu-research; delegated `specialists/design` read passed.
+- Limitations: the non-interactive CLI rejected the `skill` tool itself despite the permission setting, so access was verified through the read tool; alternate paid model failed on credits, so live model failover was not exercised.
+

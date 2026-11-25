@@ -169,12 +169,16 @@ $requiredKnowledgeFiles = @(
     'docs/ai/knowledge/KNOWN_ISSUES.md',
     'docs/ai/knowledge/CHANGELOG.md',
     'docs/ai/knowledge/studio-skill-map.json',
+    'docs/ai/knowledge/UNSLOP.md',
     'docs/ai/tasks',
     'docs/ai/handoffs',
     '.kilo/agent/main-brain.md',
     '.kilo/agent/knowledge-scribe.md',
+    '.kilo/command/design-review.md',
+    '.kilo/skills/unslop/SKILL.md',
     'scripts/ai-orchestrator.ps1',
     'scripts/ai-knowledge-bootstrap.ps1',
+    'scripts/verify-unslop.ps1',
     'kilo.json'
 )
 

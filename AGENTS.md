@@ -113,4 +113,15 @@ The house is knowledge-driven, not session-driven. Agents are temporary workers.
 - Agents must not independently redefine project architecture or override settled decisions without authorization. Escalate cross-project or high-risk decisions to the main brain and the user.
 - Required flow: KNOWLEDGE -> PLAN -> CONTEXT -> ASSIGN -> IMPLEMENT -> CHECKPOINT -> HANDOVER/FAILOVER -> NEXT AGENT -> INTEGRATE -> KNOWLEDGE SYNC.
 
+## 11. Shared design skill (Unslop)
+
+Unslop is installed once at the house root: `.kilo/skills/unslop/SKILL.md`, with references and scripts in the same folder. A `.kilocode/skills/unslop` compatibility link points to the same copy. It is shared through the global Kilo `skills.paths` setting and must not be copied into individual projects.
+
+- Use Unslop for UI, UX, frontend, layout, visual, copy, typography, motion, responsive or design-review tasks.
+- Do not invoke Unslop for backend, database, infrastructure, API or payment-only tasks.
+- Project-specific design systems, tokens, brand assets and component conventions take precedence. Unslop improves craft; it does not replace the product identity.
+- The skill is licensed CC-BY-4.0; keep the attribution in the skill.
+- The central orchestrator adds the skill to UI task context packages automatically. Design, frontend and mobile specialists must consult it; other specialists should not.
+
+
 
