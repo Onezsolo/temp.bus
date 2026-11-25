@@ -82,3 +82,18 @@ For any house project with public pages, every customer-facing page ships with:
 - focused tests for the page and its metadata.
 
 An authenticated version is additional to a public page, never a replacement. Do not launch a service only behind login unless the user explicitly requires it.
+
+## 9. Context handoff worktrees
+
+The house uses numbered working places: Agent Manager worktrees on branches `house/work-place-N`. Child projects are linked into each worktree as junctions so they remain independent repositories.
+
+The chat context indicator is owned by the client. When it reaches 89% (or before compaction), the handoff is triggered:
+
+1. Stop starting new work and finish the current step.
+2. Ensure the house worktree and every touched project repository are clean; commit or explicitly hand off intended changes.
+3. Write `docs/ai/handoffs/<timestamp>-<branch>.md` with the branch, HEAD, changed files, tests, blockers and next step.
+4. Run `/next-worktree` to create the next Agent Manager worktree, link the projects and open the next chat there.
+5. Report the new worktree path and branch.
+
+Never create the next worktree silently or leave uncommitted work behind. The agent cannot see the client's 89% indicator, so the user or client must trigger the handoff.
+
