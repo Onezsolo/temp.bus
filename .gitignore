@@ -14,6 +14,7 @@
 
 # Kilo and editor state
 /.kilo/worktrees/
+/.kilo/ai/
 /.kilo/agent-manager.json
 
 # Local and OS files

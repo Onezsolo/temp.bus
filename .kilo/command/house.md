@@ -1,11 +1,12 @@
 ---
 description: Audit the Template Business house and load its mandatory rules
 ---
-Read @AGENTS.md and @docs/ai/PROJECT_RULES.md before acting.
+Read @AGENTS.md, @docs/ai/PROJECT_RULES.md and @docs/ai/knowledge/INDEX.md before acting.
 
-Run the house audit:
+Run the house audit and central status:
 
 !`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/house-audit.ps1`
+!`powershell -NoProfile -ExecutionPolicy Bypass -File scripts/ai-orchestrator.ps1 -Action status`
 
 Then identify the target project, read its own `AGENTS.md`, `CLAUDE.md`, `.ai/rules/*`, applicable `.claude/skills/*` and `.kilo` config, and work only inside that project's repository.
 

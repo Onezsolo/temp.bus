@@ -159,6 +159,98 @@ foreach ($project in $registry.projects) {
     }
 }
 
+$requiredKnowledgeFiles = @(
+    'docs/ai/knowledge/INDEX.md',
+    'docs/ai/knowledge/projects.json',
+    'docs/ai/knowledge/MASTER_RULES.md',
+    'docs/ai/knowledge/studio-specialists.json',
+    'docs/ai/knowledge/VERIFIED_STATE.json',
+    'docs/ai/knowledge/DECISIONS.md',
+    'docs/ai/knowledge/KNOWN_ISSUES.md',
+    'docs/ai/knowledge/CHANGELOG.md',
+    'docs/ai/knowledge/studio-skill-map.json',
+    'docs/ai/tasks',
+    'docs/ai/handoffs',
+    '.kilo/agent/main-brain.md',
+    '.kilo/agent/knowledge-scribe.md',
+    'scripts/ai-orchestrator.ps1',
+    'scripts/ai-knowledge-bootstrap.ps1',
+    'kilo.json'
+)
+
+$missingKnowledge = @()
+foreach ($file in $requiredKnowledgeFiles) {
+    if (-not (Test-Path -LiteralPath (Join-Path $root $file))) { $missingKnowledge += $file }
+}
+if ($missingKnowledge.Count -eq 0) {
+    Pass 'Central knowledge and orchestration files exist.'
+} else {
+    Fail "Central knowledge files missing: $($missingKnowledge -join ', ')"
+}
+
+$knowledgeManifestPath = Join-Path $root 'docs/ai/knowledge/projects.json'
+if (Test-Path -LiteralPath $knowledgeManifestPath) {
+    try {
+        $knowledgeManifest = Get-Content -LiteralPath $knowledgeManifestPath -Raw | ConvertFrom-Json
+        $knowledgeProjects = @($knowledgeManifest.projects)
+        if ($knowledgeProjects.Count -eq @($registry.projects).Count) {
+            Pass 'Knowledge manifest matches the project registry count.'
+        } else {
+            Fail "Knowledge manifest has $($knowledgeProjects.Count) projects; registry has $(@($registry.projects).Count). Run scripts/ai-knowledge-bootstrap.ps1."
+        }
+        foreach ($knowledgeProject in $knowledgeProjects) {
+            if (-not (Test-Path -LiteralPath (Join-Path $root $knowledgeProject.knowledgeFile))) {
+                Fail "Missing knowledge file: $($knowledgeProject.knowledgeFile)"
+            }
+        }
+    } catch {
+        Fail "Knowledge manifest is not valid JSON: $($_.Exception.Message)"
+    }
+}
+
+$taskRoot = Join-Path $root 'docs/ai/tasks'
+if (Test-Path -LiteralPath $taskRoot) {
+    $taskFiles = @(Get-ChildItem -LiteralPath $taskRoot -Directory | ForEach-Object {
+        $candidate = Join-Path $_.FullName 'task.json'
+        if (Test-Path -LiteralPath $candidate) { $candidate }
+    })
+    $taskProblems = @()
+    foreach ($taskFile in $taskFiles) {
+        try {
+            $taskRecord = Get-Content -LiteralPath $taskFile -Raw | ConvertFrom-Json
+            if (-not $taskRecord.id -or -not $taskRecord.project -or -not $taskRecord.status) {
+                $taskProblems += $taskFile
+            }
+        } catch { $taskProblems += $taskFile }
+    }
+    if ($taskProblems.Count -eq 0) {
+        Pass "Task records parse and contain required fields ($($taskFiles.Count) records)."
+    } else {
+        Fail "Invalid task record(s): $($taskProblems -join ', ')"
+    }
+}
+
+$specialistFiles = @(Get-ChildItem -LiteralPath (Join-Path $root '.kilo/agent/specialists') -File -Filter '*.md' -ErrorAction SilentlyContinue)
+if ($specialistFiles.Count -ge 19) {
+    Pass "Adopted Studio specialist agents present ($($specialistFiles.Count))."
+} else {
+    Fail "Studio specialist agents are missing; run scripts/import-studio-specialists.py."
+}
+
+$kiloConfigPath = Join-Path $root 'kilo.json'
+if (Test-Path -LiteralPath $kiloConfigPath) {
+    try {
+        $kiloConfig = Get-Content -LiteralPath $kiloConfigPath -Raw | ConvertFrom-Json
+        if ($kiloConfig.default_agent -eq 'main-brain') {
+            Pass 'House Kilo config defaults to the main-brain agent.'
+        } else {
+            Fail 'kilo.json does not default to the main-brain agent.'
+        }
+    } catch {
+        Fail "kilo.json is not valid JSON: $($_.Exception.Message)"
+    }
+}
+
 Write-Host ''
 if ($script:failures -gt 0) {
     Write-Host "House audit failed with $($script:failures) issue(s)." -ForegroundColor Red

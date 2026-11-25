@@ -1,0 +1,7 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "default_agent": "main-brain",
+  "instructions": [
+    "docs/ai/knowledge/INDEX.md"
+  ]
+}

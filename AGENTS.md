@@ -97,3 +97,20 @@ The chat context indicator is owned by the client. When it reaches 89% (or befor
 
 Never create the next worktree silently or leave uncommitted work behind. The agent cannot see the client's 89% indicator, so the user or client must trigger the handoff.
 
+## 10. Central knowledge and main-brain orchestration
+
+The house is knowledge-driven, not session-driven. Agents are temporary workers.
+
+- Permanent knowledge lives in `docs/ai/knowledge/`: project summaries, adopted Studio specialist catalog, Studio master rules, decisions, known issues, verified state and changelog.
+- Permanent task history lives in `docs/ai/tasks/`: task records, context packages, checkpoints, evidence, handovers and failover packages.
+- The `main-brain` agent is the default house orchestrator. It retrieves knowledge, prepares task context, selects eligible agents/specialists, assigns work through Agent Manager/VS Code, monitors, handles failover, verifies and synchronizes knowledge.
+- Agents must not perform a full-worktree onboarding for each task. Use the task context package and then inspect only the actual files required. Never sacrifice correctness or security to reduce context.
+- Before editing, claim the task's files with `scripts/ai-orchestrator.ps1 -Action claim`. Never edit files claimed by another task. Release claims at completion or handover.
+- Record a real checkpoint after each verified step, with the executed test command and actual result. A checkpoint is not completion.
+- On completion, quota exhaustion, error, session loss or replacement, write a handover or failover package. The replacement must verify the actual workspace and continue from the last verified checkpoint; never assume an interrupted task is finished.
+- Run `scripts/ai-orchestrator.ps1 -Action sync` only after verified tests and a clean project state. The knowledge-scribe updates the human-readable architecture, decisions and known issues from actual diffs and evidence.
+- The adopted Studio specialist definitions are in `docs/ai/knowledge/studio-specialists.json` and `.kilo/agent/specialists/`. The master rules are in `docs/ai/knowledge/MASTER_RULES.md`.
+- Agents must not independently redefine project architecture or override settled decisions without authorization. Escalate cross-project or high-risk decisions to the main brain and the user.
+- Required flow: KNOWLEDGE -> PLAN -> CONTEXT -> ASSIGN -> IMPLEMENT -> CHECKPOINT -> HANDOVER/FAILOVER -> NEXT AGENT -> INTEGRATE -> KNOWLEDGE SYNC.
+
+

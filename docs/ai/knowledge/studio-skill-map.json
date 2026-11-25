@@ -1,0 +1,137 @@
+{
+  "source": "patu-technologies/backend/app/services/ai/skills_catalog.py",
+  "importedAt": "2026-11-25T06:49:30.978455+00:00",
+  "allWorkerSkills": [
+    "test-driven-development",
+    "systematic-debugging",
+    "verification-before-completion",
+    "writing-plans",
+    "requesting-code-review",
+    "using-git-worktrees",
+    "webapp-testing",
+    "mcp-builder",
+    "frontend-design"
+  ],
+  "guide": {
+    "architect": [
+      {
+        "name": "writing-plans",
+        "purpose": "break the work into small verifiable tasks with exact evidence"
+      }
+    ],
+    "design": [
+      {
+        "name": "frontend-design",
+        "purpose": "produce a functional, non-generic interface specification"
+      }
+    ],
+    "frontend": [
+      {
+        "name": "frontend-design",
+        "purpose": "avoid generic AI layouts and decoration"
+      },
+      {
+        "name": "webapp-testing",
+        "purpose": "verify rendered pages in a real browser"
+      }
+    ],
+    "backend": [
+      {
+        "name": "test-driven-development",
+        "purpose": "write the failing test before the implementation"
+      }
+    ],
+    "datacore": [
+      {
+        "name": "test-driven-development",
+        "purpose": "prove migrations and queries with tests"
+      }
+    ],
+    "connect": [
+      {
+        "name": "test-driven-development",
+        "purpose": "prove integrations with contract tests"
+      }
+    ],
+    "deploy": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "confirm the deployed artefact actually runs"
+      }
+    ],
+    "shield": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "prove the security claim with evidence"
+      }
+    ],
+    "red_team": [
+      {
+        "name": "systematic-debugging",
+        "purpose": "trace the root cause before proposing an exploit path"
+      }
+    ],
+    "blue_team": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "verify the control works, not just that it exists"
+      }
+    ],
+    "security_auditor": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "no security claim without evidence"
+      }
+    ],
+    "verify": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "only pass checks with reproducible output"
+      },
+      {
+        "name": "webapp-testing",
+        "purpose": "exercise the real browser behaviour"
+      }
+    ],
+    "turbo": [
+      {
+        "name": "systematic-debugging",
+        "purpose": "measure before optimising"
+      }
+    ],
+    "mobile": [
+      {
+        "name": "frontend-design",
+        "purpose": "responsive, touch-first layout discipline"
+      },
+      {
+        "name": "webapp-testing",
+        "purpose": "verify on a narrow viewport"
+      }
+    ],
+    "debug": [
+      {
+        "name": "systematic-debugging",
+        "purpose": "four-phase root cause process"
+      }
+    ],
+    "docs": [
+      {
+        "name": "writing-plans",
+        "purpose": "structure documentation as a sequence of usable steps"
+      }
+    ],
+    "resilience": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "prove failure handling with executed checks"
+      }
+    ],
+    "sentinel": [
+      {
+        "name": "verification-before-completion",
+        "purpose": "reject claims that lack executed evidence"
+      }
+    ]
+  }
+}
