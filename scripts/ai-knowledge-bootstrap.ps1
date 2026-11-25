@@ -145,6 +145,8 @@ Maintained by the knowledge-scribe after verified changes. Record decisions, con
     $manifestProjects += [ordered]@{
         name = $name
         path = $path
+        website = $project.website
+        role = $project.role
         type = $project.type
         remote = $project.remote
         branch = $branch
@@ -165,6 +167,7 @@ $manifest = [ordered]@{
     generatedAt = (Get-Date).ToString('o')
     source = 'scripts/ai-knowledge-bootstrap.ps1'
     projects = $manifestProjects
+    websites = @($registry.websites)
 }
 Write-Text (Join-Path $knowledgeDir 'projects.json') ($manifest | ConvertTo-Json -Depth 20)
 
@@ -221,6 +224,11 @@ __ROWS__
 Task state and handover records live under `docs/ai/tasks`. Runtime claims live under the house main worktree's `.kilo/ai/`. Use `scripts/ai-orchestrator.ps1`.
 '@
 $index = $indexTemplate.Replace('__ROWS__', ($indexRows -join "`n"))
-Write-Text (Join-Path $knowledgeDir 'INDEX.md') $index
+$indexPath = Join-Path $knowledgeDir 'INDEX.md'
+if (-not (Test-Path -LiteralPath $indexPath)) {
+    Write-Text $indexPath $index
+} else {
+    Write-Host 'INDEX.md exists; preserved.' -ForegroundColor Yellow
+}
 
 Write-Host "Knowledge bootstrap complete: $($manifestProjects.Count) projects" -ForegroundColor Green

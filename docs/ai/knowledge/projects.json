@@ -1,10 +1,12 @@
 {
-    "generatedAt":  "2026-11-25T06:50:31.7307570+00:00",
+    "generatedAt":  "2026-11-25T08:08:27.2905556+00:00",
     "source":  "scripts/ai-knowledge-bootstrap.ps1",
     "projects":  [
                      {
                          "name":  "AFA-GHANA",
                          "path":  "AFA-GHANA",
+                         "website":  "afa-ghana",
+                         "role":  "primary",
                          "type":  "Laravel",
                          "remote":  "https://github.com/Onezsolo/afa.git",
                          "branch":  "main",
@@ -45,6 +47,8 @@
                      {
                          "name":  "datatem",
                          "path":  "datatem",
+                         "website":  "datatem",
+                         "role":  "base",
                          "type":  "Laravel base clone",
                          "remote":  "https://github.com/Onezsolo/datatem.git",
                          "branch":  "main",
@@ -74,6 +78,8 @@
                      {
                          "name":  "novagel",
                          "path":  "novagel",
+                         "website":  "novagel",
+                         "role":  "primary",
                          "type":  "Laravel",
                          "remote":  "https://github.com/Onezsolo/novagel.git",
                          "branch":  "patu/program-f99758f5",
@@ -109,6 +115,8 @@
                      {
                          "name":  "one-system",
                          "path":  "one-system",
+                         "website":  "datatem",
+                         "role":  "primary",
                          "type":  "Laravel",
                          "remote":  "https://github.com/Onezsolo/datatem.git",
                          "branch":  "feat/one-system-foundation",
@@ -141,6 +149,8 @@
                      {
                          "name":  "patu-design-intelligence",
                          "path":  "patu-design-intelligence",
+                         "website":  "patu-studio",
+                         "role":  "design",
                          "type":  "Python FastAPI + SvelteKit",
                          "remote":  "https://github.com/Onezsolo/patu-codes.git",
                          "branch":  "design-intelligence",
@@ -177,6 +187,8 @@
                      {
                          "name":  "patu-research",
                          "path":  "patu-research",
+                         "website":  "patu-research",
+                         "role":  "primary",
                          "type":  "Python FastAPI + Next.js",
                          "remote":  "https://github.com/Onezsolo/patu-research.git",
                          "branch":  "main",
@@ -205,6 +217,8 @@
                      {
                          "name":  "patu-technologies",
                          "path":  "patu-technologies",
+                         "website":  "patu-studio",
+                         "role":  "primary",
                          "type":  "Python FastAPI + SvelteKit",
                          "remote":  "https://github.com/Onezsolo/patu-codes.git",
                          "branch":  "main",
@@ -242,6 +256,8 @@
                      {
                          "name":  "PATUchat",
                          "path":  "PATUchat",
+                         "website":  "patuchat",
+                         "role":  "primary",
                          "type":  "Laravel",
                          "remote":  "https://github.com/Onezsolo/PATUchat.git",
                          "branch":  "main",
@@ -280,6 +296,8 @@
                      {
                          "name":  "patupa",
                          "path":  "patupa",
+                         "website":  "patupa",
+                         "role":  "primary",
                          "type":  "Laravel",
                          "remote":  "https://github.com/Onezsolo/patupa.git",
                          "branch":  "main",
@@ -324,6 +342,8 @@
                      {
                          "name":  "patupaa-worker",
                          "path":  "patupaa-worker",
+                         "website":  "patupa",
+                         "role":  "worker",
                          "type":  "Laravel worker",
                          "remote":  "https://github.com/Onezsolo/patupa.git",
                          "branch":  "feature/patu-dialer",
@@ -359,6 +379,157 @@
                          "lastCommitSubject":  "docs: add Template Business house rules pointer",
                          "lastCommitAt":  "2026-11-24T23:30:23Z",
                          "lastVerified":  null
+                     }
+                 ],
+    "websites":  [
+                     {
+                         "name":  "datatem",
+                         "displayName":  "Datatem",
+                         "repository":  "https://github.com/Onezsolo/datatem.git",
+                         "primary":  "one-system",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "one-system",
+                                                   "branch":  "feat/one-system-foundation",
+                                                   "role":  "primary"
+                                               },
+                                               {
+                                                   "path":  "datatem",
+                                                   "branch":  "main",
+                                                   "role":  "base"
+                                               }
+                                           ],
+                         "domains":  [
+                                         "datatem.test",
+                                         "one-system.test"
+                                     ]
+                     },
+                     {
+                         "name":  "patupa",
+                         "displayName":  "Patupa",
+                         "repository":  "https://github.com/Onezsolo/patupa.git",
+                         "primary":  "patupa",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "patupa",
+                                                   "branch":  "main",
+                                                   "role":  "primary"
+                                               },
+                                               {
+                                                   "path":  "patupaa-worker",
+                                                   "branch":  "feature/patu-dialer",
+                                                   "role":  "worker"
+                                               }
+                                           ],
+                         "domains":  [
+                                         "patupa.test"
+                                     ]
+                     },
+                     {
+                         "name":  "patu-studio",
+                         "displayName":  "PATU Technologies",
+                         "repository":  "https://github.com/Onezsolo/patu-codes.git",
+                         "primary":  "patu-technologies",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "patu-technologies",
+                                                   "branch":  "main",
+                                                   "role":  "primary"
+                                               },
+                                               {
+                                                   "path":  "patu-design-intelligence",
+                                                   "branch":  "design-intelligence",
+                                                   "role":  "design"
+                                               }
+                                           ],
+                         "domains":  [
+
+                                     ]
+                     },
+                     {
+                         "name":  "afa-ghana",
+                         "displayName":  "AFA Ghana",
+                         "repository":  "https://github.com/Onezsolo/afa.git",
+                         "primary":  "AFA-GHANA",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "AFA-GHANA",
+                                                   "branch":  "main",
+                                                   "role":  "primary"
+                                               }
+                                           ],
+                         "domains":  [
+                                         "AFA-GHANA.test"
+                                     ]
+                     },
+                     {
+                         "name":  "novagel",
+                         "displayName":  "Novagel Imports",
+                         "repository":  "https://github.com/Onezsolo/novagel.git",
+                         "primary":  "novagel",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "novagel",
+                                                   "branch":  "patu/program-f99758f5",
+                                                   "role":  "primary"
+                                               }
+                                           ],
+                         "domains":  [
+
+                                     ]
+                     },
+                     {
+                         "name":  "patu-research",
+                         "displayName":  "PATU Research",
+                         "repository":  "https://github.com/Onezsolo/patu-research.git",
+                         "primary":  "patu-research",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "patu-research",
+                                                   "branch":  "main",
+                                                   "role":  "primary"
+                                               }
+                                           ],
+                         "domains":  [
+
+                                     ]
+                     },
+                     {
+                         "name":  "patuchat",
+                         "displayName":  "PATUchat",
+                         "repository":  "https://github.com/Onezsolo/PATUchat.git",
+                         "primary":  "PATUchat",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "PATUchat",
+                                                   "branch":  "main",
+                                                   "role":  "primary"
+                                               }
+                                           ],
+                         "domains":  [
+                                         "PATUchat.test"
+                                     ]
+                     },
+                     {
+                         "name":  "patutrade",
+                         "displayName":  "Patutrade",
+                         "repository":  "https://github.com/Onezsolo/patutrade.git",
+                         "primary":  "patutrade.worktrees/patutrade",
+                         "workingCopies":  [
+                                               {
+                                                   "path":  "patutrade.worktrees/patutrade",
+                                                   "branch":  "deploy/six-bot-okx-demo",
+                                                   "role":  "primary"
+                                               },
+                                               {
+                                                   "path":  "patutrade.worktrees/changes-not-showing-fix",
+                                                   "branch":  "agents/changes-not-showing-fix",
+                                                   "role":  "working-copy"
+                                               }
+                                           ],
+                         "domains":  [
+                                         "patutrade.worktrees.test"
+                                     ]
                      }
                  ]
 }

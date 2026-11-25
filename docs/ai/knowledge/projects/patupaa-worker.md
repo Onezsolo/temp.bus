@@ -4,6 +4,8 @@
 
 ## Identity
 
+- Website group: **Patupa** (`patupa`); role: **worker**.
+
 - Type: Laravel worker
 - Repository: https://github.com/Onezsolo/patupa.git
 - Current branch: feature/patu-dialer

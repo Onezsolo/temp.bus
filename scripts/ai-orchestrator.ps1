@@ -324,6 +324,9 @@ function New-Context([string]$Dir, $Task) {
     foreach ($line in $fileLines) { $lines.Add($line) }
     $lines.Add('')
     $lines.Add('## Project rules and commands')
+    if ($project.PSObject.Properties.Name -contains 'website' -and $project.website) {
+        $lines.Add("- Website group: $($project.website) ($($project.role))")
+    }
     foreach ($line in $rules) { $lines.Add($line) }
     $lines.Add('- Verify commands:')
     foreach ($line in $verify) { $lines.Add("  $line") }

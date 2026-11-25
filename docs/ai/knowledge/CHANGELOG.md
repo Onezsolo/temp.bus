@@ -17,3 +17,10 @@ Only entries backed by a checkpoint, git state and executed test evidence belong
 - Verified: `verify-unslop.ps1` 9 PASS; workflow self-test 35 PASS; live `kilo run` read-only discovery/read passed in AFA-GHANA and patu-research; delegated `specialists/design` read passed.
 - Limitations: the non-interactive CLI rejected the `skill` tool itself despite the permission setting, so access was verified through the read tool; alternate paid model failed on credits, so live model failover was not exercised.
 
+## 2026-11-25 - Website grouping
+
+- Grouped the 10 checkouts into 8 websites in `projects.json.websites`; same-repository variants are working copies, not separate products.
+- Updated `WEBSITES.md`, the knowledge index, all project summaries, the orchestrator context and the public showcase to count each website once. No checkout was moved.
+- `patupa` + `patupaa-worker`, `datatem` + `one-system`, `patu-technologies` + `patu-design-intelligence`, and the two Patutrade clones are recorded as one website each.
+- Verified: house audit passes all 8 website groups; showcase serves 8 cards; workflow self-test passes.
+

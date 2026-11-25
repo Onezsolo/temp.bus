@@ -53,6 +53,7 @@ Static verification result: 9 PASS, including SKILL.md hash equality, frontmatte
 
 - The non-interactive CLI code agent found the skill in its available skills list and tried the `skill` tool, but the CLI rejected that specific tool call with `The user rejected permission to use this specific tool call` even with `--auto` and an explicit allow. The read-tool path was verified in both projects and is what the specialist prompts and `/design-review` use.
 - An alternate paid model (`kilo/deepseek/deepseek-v4.1-flash`) could not run the check because the account had no credits. The skill is file/global-config based and not model-bound; replacement sessions that use the working default model retain access. This model-failover case is configuration-verified, not live-model-tested.
+- Design and coverage audits count each website once. Same-repository branch checkouts such as `patupa` + `patupaa-worker`, `datatem` + `one-system`, and the PATU Technologies pair are one website, not separate products. See `WEBSITES.md`.
 - Test projects were not modified; only the house and the global Kilo config were changed. Global config backup: `C:\Users\ESCCAY\.config\kilo\kilo.jsonc.bak-unslop-20261125-074003`.
 - Workflow self-test after the Unslop integration: 35 checks passed, including non-UI exclusion and automatic UI context inclusion.
 

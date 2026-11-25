@@ -159,8 +159,72 @@ foreach ($project in $registry.projects) {
     }
 }
 
-$requiredKnowledgeFiles = @(
-    'docs/ai/knowledge/INDEX.md',
+# Website grouping: one website per repository, multiple working copies allowed.
+$websiteGroups = @($registry.websites)
+if ($websiteGroups.Count -gt 0) {
+    Pass "Website grouping present ($($websiteGroups.Count) websites)."
+} else {
+    Fail 'projects.json has no websites grouping.'
+}
+
+$websiteNames = @()
+foreach ($website in $websiteGroups) {
+    $websiteName = [string]$website.name
+    $websiteNames += $websiteName
+    $copies = @($website.workingCopies)
+
+    if ($copies.Count -eq 0) {
+        Fail "Website '$websiteName' has no working copies."
+        continue
+    }
+
+    $primary = [string]$website.primary
+    $primaryFound = @($copies | Where-Object { [string]$_.path -eq $primary }).Count -gt 0
+    if (-not $primaryFound) { Fail "Website '$websiteName' primary working copy is not listed: $primary" }
+
+    foreach ($copy in $copies) {
+        $copyPath = Join-Path $root ([string]$copy.path)
+        if (-not (Test-Path -LiteralPath (Join-Path $copyPath '.git'))) {
+            Fail "Website '$websiteName' working copy is missing or not a Git repo: $($copy.path)"
+            continue
+        }
+
+        $copyRemote = git -C $copyPath remote get-url origin 2>$null
+        if ($copyRemote -ne $website.repository) {
+            Fail "Website '$websiteName' working copy '$($copy.path)' remote is '$copyRemote'; expected '$($website.repository)'."
+        }
+
+        $linkedProject = @($registry.projects | Where-Object { [string]$_.path -eq [string]$copy.path })
+        if ($linkedProject.Count -gt 0) {
+            if ([string]$linkedProject[0].website -ne $websiteName) {
+                Fail "Working copy '$($copy.path)' points to website '$($linkedProject[0].website)'; expected '$websiteName'."
+            }
+            if ([string]$linkedProject[0].role -ne [string]$copy.role) {
+                Fail "Working copy '$($copy.path)' role '$($linkedProject[0].role)' does not match website role '$($copy.role)'."
+            }
+        }
+    }
+
+    foreach ($linkedProject in @($registry.projects | Where-Object { [string]$_.website -eq $websiteName })) {
+        if (@($copies | Where-Object { [string]$_.path -eq [string]$linkedProject.path }).Count -eq 0) {
+            Fail "Project '$($linkedProject.path)' is not listed under website '$websiteName' working copies."
+        }
+    }
+
+    Pass "Website '$($website.displayName)' groups $($copies.Count) working copy/copies."
+}
+
+foreach ($project in $registry.projects) {
+    if (-not $project.website) {
+        Fail "Project '$($project.path)' has no website group."
+        continue
+    }
+    if ($websiteNames -notcontains [string]$project.website) {
+        Fail "Project '$($project.path)' points to unknown website '$($project.website)'."
+    }
+}
+
+$requiredKnowledgeFiles = @(    'docs/ai/knowledge/INDEX.md',
     'docs/ai/knowledge/projects.json',
     'docs/ai/knowledge/MASTER_RULES.md',
     'docs/ai/knowledge/studio-specialists.json',
@@ -168,6 +232,7 @@ $requiredKnowledgeFiles = @(
     'docs/ai/knowledge/DECISIONS.md',
     'docs/ai/knowledge/KNOWN_ISSUES.md',
     'docs/ai/knowledge/CHANGELOG.md',
+    'docs/ai/knowledge/WEBSITES.md',
     'docs/ai/knowledge/studio-skill-map.json',
     'docs/ai/knowledge/UNSLOP.md',
     'docs/ai/tasks',

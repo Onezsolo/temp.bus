@@ -14,8 +14,9 @@ Do not perform a full-worktree onboarding before every task. The orchestrator pr
 
 ## Knowledge files
 
-- `projects.json` - machine-readable project manifest (stack, rules, verify commands, key paths, current commits).
-- `projects/<name>.md` - per-project verified summary and architecture notes.
+- `projects.json` - machine-readable project and website manifest (stack, rules, verify commands, key paths, current commits).
+- `projects/<name>.md` - per-checkout verified summary and architecture notes.
+- `WEBSITES.md` - one row per website/repository, with primary and variant working copies.
 - `VERIFIED_STATE.json` - latest verified checkpoint per project.
 - `CHANGELOG.md` - verified changes, newest first.
 - `DECISIONS.md` - settled decisions and rationale.
@@ -29,20 +30,20 @@ Do not perform a full-worktree onboarding before every task. The orchestrator pr
 
 - Unslop design skill: `C:\laragon\www\template-business\.kilo\skills\unslop\SKILL.md`. Use it for UI/UX, frontend, layout, visual, copy, typography, motion, responsive and design-review tasks; do not invoke it for backend-only work. It is registered globally through `skills.paths`; do not copy it into child projects. Project design systems and tokens take precedence.
 
-## Projects
+## Websites
 
-| Project | Type | Knowledge | Remote |
-|---|---|---|---|
-| AFA-GHANA | Laravel | `docs/ai/knowledge/projects/AFA-GHANA.md` | https://github.com/Onezsolo/afa.git |
-| datatem | Laravel base clone | `docs/ai/knowledge/projects/datatem.md` | https://github.com/Onezsolo/datatem.git |
-| novagel | Laravel | `docs/ai/knowledge/projects/novagel.md` | https://github.com/Onezsolo/novagel.git |
-| one-system | Laravel | `docs/ai/knowledge/projects/one-system.md` | https://github.com/Onezsolo/datatem.git |
-| patu-design-intelligence | Python FastAPI + SvelteKit | `docs/ai/knowledge/projects/patu-design-intelligence.md` | https://github.com/Onezsolo/patu-codes.git |
-| patu-research | Python FastAPI + Next.js | `docs/ai/knowledge/projects/patu-research.md` | https://github.com/Onezsolo/patu-research.git |
-| patu-technologies | Python FastAPI + SvelteKit | `docs/ai/knowledge/projects/patu-technologies.md` | https://github.com/Onezsolo/patu-codes.git |
-| PATUchat | Laravel | `docs/ai/knowledge/projects/PATUchat.md` | https://github.com/Onezsolo/PATUchat.git |
-| patupa | Laravel | `docs/ai/knowledge/projects/patupa.md` | https://github.com/Onezsolo/patupa.git |
-| patupaa-worker | Laravel worker | `docs/ai/knowledge/projects/patupaa-worker.md` | https://github.com/Onezsolo/patupa.git |
+One website per repository. Separate checkouts are working copies, not separate products. Full details: `WEBSITES.md`.
+
+| Website | Repository | Primary working copy | Other working copies | Knowledge |
+|---|---|---|---|---|
+| Datatem | `Onezsolo/datatem.git` | `one-system` (`feat/one-system-foundation`) | `datatem` (base, `main`) | `projects/one-system.md`, `projects/datatem.md` |
+| Patupa | `Onezsolo/patupa.git` | `patupa` (`main`) | `patupaa-worker` (`feature/patu-dialer`) | `projects/patupa.md`, `projects/patupaa-worker.md` |
+| PATU Technologies | `Onezsolo/patu-codes.git` | `patu-technologies` (`main`) | `patu-design-intelligence` (`design-intelligence`) | `projects/patu-technologies.md`, `projects/patu-design-intelligence.md` |
+| AFA Ghana | `Onezsolo/afa.git` | `AFA-GHANA` (`main`) | none | `projects/AFA-GHANA.md` |
+| Novagel Imports | `Onezsolo/novagel.git` | `novagel` (`patu/program-f99758f5`) | none | `projects/novagel.md` |
+| PATU Research | `Onezsolo/patu-research.git` | `patu-research` (`main`) | none | `projects/patu-research.md` |
+| PATUchat | `Onezsolo/PATUchat.git` | `PATUchat` (`main`) | none | `projects/PATUchat.md` |
+| Patutrade | `Onezsolo/patutrade.git` | `patutrade.worktrees/patutrade` (`deploy/six-bot-okx-demo`) | `patutrade.worktrees/changes-not-showing-fix` (`agents/changes-not-showing-fix`) | `WEBSITES.md` |
 
 ## Task lifecycle
 

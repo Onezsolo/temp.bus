@@ -8,6 +8,7 @@ $projects = [
         'stack' => ['Laravel 11', 'MySQL', 'Paystack'],
         'demo' => 'http://datatem.test',
         'note' => 'Local demo',
+        'copies' => 'Working copies: one-system (active) + datatem (base)',
     ],
     [
         'name' => 'Novagel Imports',
@@ -32,6 +33,15 @@ $projects = [
         'stack' => ['Laravel', 'Python', 'Redis'],
         'demo' => null,
         'note' => 'Local stack setup in progress',
+        'copies' => 'Working copies: patu-technologies + patu-design-intelligence',
+    ],
+    [
+        'name' => 'PATU Research',
+        'category' => 'AI & research',
+        'summary' => 'A research workspace for evidence, product context and structured engineering decisions.',
+        'stack' => ['Python', 'Next.js', 'PostgreSQL'],
+        'demo' => null,
+        'note' => 'Local setup in progress',
     ],
     [
         'name' => 'PATUchat',
@@ -48,6 +58,7 @@ $projects = [
         'stack' => ['Laravel', 'MySQL', 'Payments'],
         'demo' => 'http://patupa.test',
         'note' => 'Local demo',
+        'copies' => 'Working copies: patupa + patupaa-worker (dialer)',
     ],
     [
         'name' => 'Patutrade',
@@ -56,6 +67,7 @@ $projects = [
         'stack' => ['Laravel', 'MySQL', 'Market data'],
         'demo' => 'http://patutrade.worktrees.test',
         'note' => 'Local demo',
+        'copies' => 'Working copies: deploy + changes-not-showing-fix',
     ],
 ];
 
@@ -333,6 +345,13 @@ $projectCount = count($projects);
             font-size: 11px;
         }
 
+        .project-copies {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.45;
+        }
+
         .project-body {
             display: flex;
             flex-direction: column;
@@ -485,10 +504,10 @@ $projectCount = count($projects);
             <div class="hero-grid">
                 <div>
                     <h1>A working<br>library.</h1>
-                    <p class="hero-copy">Seven systems for data, commerce, public services, AI and trading. Built in Ghana, each one a complete deployment ready to adapt.</p>
+                    <p class="hero-copy">Eight systems for data, commerce, public services, AI and trading. Built in Ghana, each one a complete deployment ready to adapt.</p>
                 </div>
                 <aside class="hero-aside" aria-label="Library summary">
-                    <p>Seven projects. One standard: the build has to work.</p>
+                    <p>Eight projects. One standard: the build has to work.</p>
                     <dl>
                         <div>
                             <dt>Projects</dt>
@@ -524,6 +543,9 @@ $projectCount = count($projects);
                                 <h3 class="project-name"><?= htmlspecialchars($project['name'], ENT_QUOTES, 'UTF-8') ?></h3>
                             <?php endif; ?>
                             <p class="project-note"><?= htmlspecialchars($project['note'], ENT_QUOTES, 'UTF-8') ?></p>
+                            <?php if (!empty($project['copies'])): ?>
+                                <p class="project-copies"><?= htmlspecialchars($project['copies'], ENT_QUOTES, 'UTF-8') ?></p>
+                            <?php endif; ?>
                         </div>
 
                         <div class="project-body">

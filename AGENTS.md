@@ -123,5 +123,14 @@ Unslop is installed once at the house root: `.kilo/skills/unslop/SKILL.md`, with
 - The skill is licensed CC-BY-4.0; keep the attribution in the skill.
 - The central orchestrator adds the skill to UI task context packages automatically. Design, frontend and mobile specialists must consult it; other specialists should not.
 
+## 12. Website arrangement
+
+- The house groups checkouts by website/repository. A website may have several independent working copies on different branches: `patupa` + `patupaa-worker`, `datatem` + `one-system`, `patu-technologies` + `patu-design-intelligence`, and the Patutrade clones.
+- `projects.json.projects` is the checkout registry, because every checkout has its own Git boundary. `projects.json.websites` and `docs/ai/knowledge/WEBSITES.md` are the website grouping.
+- Count each website once in the showcase, knowledge, audits and reports. A branch working copy is not a separate product.
+- The primary working copy is the current implementation for audits and demos; branch variants are recorded underneath the website.
+- Do not move, rename, merge or delete a checkout to consolidate a website unless the user explicitly authorizes a structural migration.
+
+
 
 

@@ -4,6 +4,8 @@
 
 ## Identity
 
+- Website group: **AFA Ghana** (`afa-ghana`); role: **primary**.
+
 - Type: Laravel
 - Repository: https://github.com/Onezsolo/afa.git
 - Current branch: main
